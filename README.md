@@ -1,9 +1,10 @@
 # Docker Build, Push and Continuous Integration for a Node JS application
 
-[![Run Status](https://api.shippable.com/projects/5885aec6aebc4e0f00804633/badge?branch=master)](https://app.shippable.com/projects/5885aec6aebc4e0f00804633)
-[![Coverage Badge](https://api.shippable.com/projects/5885aec6aebc4e0f00804633/coverageBadge?branch=master)](https://app.shippable.com/projects/5885aec6aebc4e0f00804633)
+[![Run Status](https://api.shippable.com/projects/58f002c7c585000700aef8ca/badge?branch=master)](https://app.shippable.com/github/devops-recipes/push-docker-hub)
 
-![AyeAye](https://github.com/shippableSamples/node-build-push-docker-hub/blob/master/public/resources/images/captain.png)
+[![Coverage Badge](https://api.shippable.com/projects/58f002c7c585000700aef8ca/coverageBadge?branch=master)](https://app.shippable.com/github/devops-recipes/push-docker-hub)
+
+![AyeAye](https://github.com/devops-recipes/push-docker-hub/blob/master/public/resources/images/captain.png)
 
 A simple Node JS application with unit tests and coverage reports using mocha 
 and istanbul. It also does a docker build once CI posses and then pushes the image
@@ -22,7 +23,7 @@ to docker hub
 ## CI Reports on Shippable
 
 ### CI Integration View
-![CI Integration View](https://github.com/shippableSamples/node-build-push-docker-hub/blob/master/public/resources/images/integration.jpg)
+![CI Integration View](https://github.com/devops-recipes/push-docker-hub/blob/master/public/resources/images/integration.jpg)
 
 ### CI Console Output
-![CI Console Output](https://github.com/shippableSamples/node-build-push-docker-hub/blob/master/public/resources/images/console.jpg)
+![CI Console Output](https://github.com/devops-recipes/push-docker-hub/blob/master/public/resources/images/console.jpg)
