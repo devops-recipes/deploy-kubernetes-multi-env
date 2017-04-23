@@ -15,7 +15,7 @@ jobs:
       - deploy-kubernetes-basic
 
 #kubernetes deploy job
-  - name: deploy-kubernetes-basic-kube-deploy
+  - name: kube-deploy
     type: deploy
     steps:
       - IN: deploy-kubernetes-basic-manifest
