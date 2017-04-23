@@ -1,0 +1,20 @@
+jobs:
+  - name: deploy-kubernetes-basic-manifest
+    type: manifest
+    steps:
+     - IN: deploy-kubernetes-basic-img
+     - IN: deploy-kubernetes-basic-img-options
+     - TASK: managed
+   flags:
+     - deploy-kubernetes-basic
+
+#kubernetes deploy job
+  - name: deploy-kubernetes-basic-kube-deploy
+    type: deploy
+    steps:
+      - IN: deploy-kubernetes-basic-manifest
+      - IN: deploy-kubernetes-basic-kube-cluster
+      - TASK: managed
+        deployMethod: upgrade
+   flags:
+      - deploy-kubernetes-basic
