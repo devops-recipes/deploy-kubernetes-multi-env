@@ -1,6 +1,6 @@
 jobs:
 
-  - name: deploy-kubernetes-basic-component_runCI
+  - name: deploy-kubernetes-basic_runCI
     type: runCI
     steps:
       - OUT: deploy-kubernetes-basic-img
