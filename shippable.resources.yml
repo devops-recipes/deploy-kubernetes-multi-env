@@ -15,12 +15,12 @@ resources:
     version:
       portMappings:
         - 80:80
-   flags:
+    flags:
       - deploy-kubernetes-basic
 
 #kubernetes cluster
   - name: deploy-kubernetes-basic-kube-cluster
     type: cluster
     integration: dr-kube-cluster    #replace with your Kubernetes integration name
-   flags:
+    flags:
       - deploy-kubernetes-basic
