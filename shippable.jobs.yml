@@ -1,4 +1,10 @@
 jobs:
+
+  - name: deploy-kubernetes-basic-component_runCI
+    type: runCI
+    steps:
+      - OUT: deploy-kubernetes-basic-img
+
   - name: deploy-kubernetes-basic-manifest
     type: manifest
     steps:
