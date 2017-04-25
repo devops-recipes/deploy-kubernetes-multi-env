@@ -1,26 +1,110 @@
 resources:
-  - name: deploy-kubernetes-basic-img
+  ######################################
+  # The image containing the application
+  ######################################
+
+  - name: deploy-kubernetes-multi-env-image
     type: image
     integration: dr-dockerhub    #replace with your Docker Hub integration name
     pointer:
-      sourceName: "docker.io/devopsrecipes/deploy-kubernetes-basic"  #replace with your image name on Docker Hub
+      sourceName: "docker.io/devopsrecipes/deploy-kubernetes-multi-env"  #replace with your image name on Docker Hub
       isPull: false
     seed:
       versionName: "master.1"  #replace with your image tag on Docker Hub
     flags:
-      - deploy-kubernetes-basic
+      - deploy-kubernetes-multi-env
 
-  - name: deploy-kubernetes-basic-img-options
-    type: dockerOptions
-    version:
-      portMappings:
-        - 80:80
+  ############################
+  # cluster for parallel envs
+  ############################
+
+  - name: deploy-kubernetes-multi-env-maincluster
+    type: cluster
+    integration: dr-kube-prod-cluster    #replace with your Kubernetes integration name
     flags:
-      - deploy-kubernetes-basic
+      - deploy-kubernetes-multi-env
 
-#kubernetes cluster
-  - name: deploy-kubernetes-basic-kube-cluster
+  ###########################
+  # clusters for serial envs
+  ###########################
+
+  - name: deploy-kubernetes-multi-env-betacluster
     type: cluster
     integration: dr-kube-cluster    #replace with your Kubernetes integration name
     flags:
-      - deploy-kubernetes-basic
+      - deploy-kubernetes-multi-env
+
+  - name: deploy-kubernetes-multi-env-prodcluster
+    type: cluster
+    integration: dr-kube-prod-cluster    #replace with your Kubernetes integration name
+    flags:
+      - deploy-kubernetes-multi-env
+
+  ####################################
+  # Advanced options for multiple envs
+  ####################################
+
+  - name: deploy-kubernetes-multi-env-blueopts
+      type: dockerOptions
+      flags:
+        - deploy-kubernetes-multi-env
+      labels:
+        color: blue
+
+    - name: deploy-kubernetes-multi-env-greenopts
+      type: dockerOptions
+      flags:
+        - deploy-kubernetes-multi-env
+      labels:
+        color: green
+
+  - name: deploy-kubernetes-multi-env-prodopts
+    type: dockerOptions
+    flags:
+      - deploy-kubernetes-multi-env
+    version:
+      memory: 512
+    labels:
+      environment: prod
+
+  - name: deploy-kubernetes-multi-env-betaopts
+    type: dockerOptions
+    flags:
+      - deploy-kubernetes-multi-env
+    version:
+      memory: 128
+    labels:
+      environment: beta
+
+  - name: deploy-kubernetes-multi-env-blueparams
+    type: params
+    flags:
+      - deploy-kubernetes-multi-env
+    version:
+      params:
+        ENVIRONMENT: "blue"
+
+  - name: deploy-kubernetes-multi-env-greenparams
+    type: params
+    flags:
+      - deploy-kubernetes-multi-env
+    version:
+      params:
+        ENVIRONMENT: "green"
+
+
+  - name: deploy-kubernetes-multi-env-betaparams
+    type: params
+    flags:
+      - deploy-kubernetes-multi-env
+    version:
+      params:
+        ENVIRONMENT: "beta"
+
+  - name: deploy-kubernetes-multi-env-prodparams
+    type: params
+    flags:
+      - deploy-kubernetes-multi-env
+    version:
+      params:
+        ENVIRONMENT: "prod"

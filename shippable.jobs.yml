@@ -1,26 +1,81 @@
 jobs:
 
-  - name: deploy-kubernetes-basic_runCI
+  ###################################
+  # runCI job to update the image tag
+  ###################################
+  - name: deploy-kubernetes-multi-env_runCI
     type: runCI
+    flags:
+      - deploy-kubernetes-multi-env
     steps:
-      - OUT: deploy-kubernetes-basic-img
+      - OUT: deploy-kubernetes-multi-env-image
 
-  - name: deploy-kubernetes-basic-manifest
+  ######################################
+  # Two parallel environments
+  ######################################
+
+  - name: deploy-kubernetes-multi-env-manifest-1
     type: manifest
-    steps:
-      - IN: deploy-kubernetes-basic-img
-      - IN: deploy-kubernetes-basic-img-options
-      - TASK: managed
     flags:
-      - deploy-kubernetes-basic
+      - deploy-kubernetes-multi-env
+    steps:
+      - IN: deploy-kubernetes-multi-env-image
 
-#kubernetes deploy job
-  - name: kube-deploy
+  - name: dkme-bluedeploy
     type: deploy
-    steps:
-      - IN: deploy-kubernetes-basic-manifest
-      - IN: deploy-kubernetes-basic-kube-cluster
-      - TASK: managed
-        deployMethod: upgrade
     flags:
-      - deploy-kubernetes-basic
+      - deploy-kubernetes-multi-env
+    steps:
+      - IN: deploy-kubernetes-multi-env-blueparams
+      - IN: deploy-kubernetes-multi-env-blueopts
+      - IN: deploy-kubernetes-multi-env-manifest-1
+        switch: off
+      - IN: deploy-kubernetes-multi-env-maincluster
+
+  - name: dkme-greendeploy
+    type: deploy
+    flags:
+      - deploy-kubernetes-multi-env
+    steps:
+      - IN: deploy-kubernetes-multi-env-greenparams
+      - IN: deploy-kubernetes-multi-env-greenopts
+      - IN: deploy-kubernetes-multi-env-manifest-1
+        switch: off
+      - IN: deploy-kubernetes-multi-env-maincluster
+
+
+  ########################################
+  # Two serial environments
+  ########################################
+
+  - name: deploy-kubernetes-multi-env-manifest-2
+    type: manifest
+    flags:
+      - deploy-kubernetes-multi-env
+    steps:
+      - IN: deploy-kubernetes-multi-env-commonparams
+      - IN: deploy-kubernetes-multi-env-image
+
+  - name: deploy-kubernetes-multi-env-betadeploy
+    type: deploy
+    flags:
+      - deploy-kubernetes-multi-env
+    steps:
+      - IN: deploy-kubernetes-multi-env-betaopts
+      - IN: deploy-kubernetes-multi-env-betaparams
+      - IN: deploy-kubernetes-multi-env-manifest-2
+      - IN: deploy-kubernetes-multi-env-betacluster
+
+  - name: deploy-kubernetes-multi-env-proddeploy
+    type: deploy
+    flags:
+      - deploy-kubernetes-multi-env
+    steps:
+      - IN: deploy-kubernetes-multi-env-prodopts
+        switch: off
+      - IN: deploy-kubernetes-multi-env-prodparams
+        switch: off
+      - IN: deploy-kubernetes-multi-env-betadeploy
+        switch: off
+      - IN: deploy-kubernetes-multi-env-prodcluster
+        switch: off
