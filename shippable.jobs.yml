@@ -74,7 +74,7 @@ jobs:
         switch: off
       - IN: deploy-kubernetes-multi-env-prodparams
         switch: off
-      - IN: deploy-kubernetes-multi-env-betadeploy
+      - IN: dkme-betadeploy
         switch: off
       - IN: deploy-kubernetes-multi-env-prodcluster
         switch: off
