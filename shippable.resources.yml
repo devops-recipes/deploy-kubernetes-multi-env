@@ -45,18 +45,18 @@ resources:
   ####################################
 
   - name: deploy-kubernetes-multi-env-blueopts
-      type: dockerOptions
-      flags:
-        - deploy-kubernetes-multi-env
-      labels:
-        color: blue
+    type: dockerOptions
+    flags:
+      - deploy-kubernetes-multi-env
+    labels:
+      color: blue
 
-    - name: deploy-kubernetes-multi-env-greenopts
-      type: dockerOptions
-      flags:
-        - deploy-kubernetes-multi-env
-      labels:
-        color: green
+  - name: deploy-kubernetes-multi-env-greenopts
+    type: dockerOptions
+    flags:
+      - deploy-kubernetes-multi-env
+    labels:
+      color: green
 
   - name: deploy-kubernetes-multi-env-prodopts
     type: dockerOptions
