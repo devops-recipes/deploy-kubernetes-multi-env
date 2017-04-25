@@ -53,7 +53,6 @@ jobs:
     flags:
       - deploy-kubernetes-multi-env
     steps:
-      - IN: deploy-kubernetes-multi-env-commonparams
       - IN: deploy-kubernetes-multi-env-image
 
   - name: deploy-kubernetes-multi-env-betadeploy
