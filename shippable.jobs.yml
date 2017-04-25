@@ -55,7 +55,7 @@ jobs:
     steps:
       - IN: deploy-kubernetes-multi-env-image
 
-  - name: deploy-kubernetes-multi-env-betadeploy
+  - name: dkme-betadeploy
     type: deploy
     flags:
       - deploy-kubernetes-multi-env
@@ -65,7 +65,7 @@ jobs:
       - IN: deploy-kubernetes-multi-env-manifest-2
       - IN: deploy-kubernetes-multi-env-betacluster
 
-  - name: deploy-kubernetes-multi-env-proddeploy
+  - name: dkme-proddeploy
     type: deploy
     flags:
       - deploy-kubernetes-multi-env
