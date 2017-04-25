@@ -48,15 +48,17 @@ resources:
     type: dockerOptions
     flags:
       - deploy-kubernetes-multi-env
-    labels:
-      color: blue
+    version:
+      labels:
+        color: blue
 
   - name: deploy-kubernetes-multi-env-greenopts
     type: dockerOptions
     flags:
       - deploy-kubernetes-multi-env
-    labels:
-      color: green
+    version:
+      labels:
+        color: green
 
   - name: deploy-kubernetes-multi-env-prodopts
     type: dockerOptions
@@ -64,8 +66,8 @@ resources:
       - deploy-kubernetes-multi-env
     version:
       memory: 512
-    labels:
-      environment: prod
+      labels:
+        environment: prod
 
   - name: deploy-kubernetes-multi-env-betaopts
     type: dockerOptions
@@ -73,8 +75,8 @@ resources:
       - deploy-kubernetes-multi-env
     version:
       memory: 128
-    labels:
-      environment: beta
+      labels:
+        environment: beta
 
   - name: deploy-kubernetes-multi-env-blueparams
     type: params
