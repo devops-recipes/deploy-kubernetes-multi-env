@@ -16,7 +16,7 @@ Kubernetes clusters.
 ## Setup
 * Fork this repo into your local repository in your source control account.
 * Login into Shippable with your source control account(wwww.shippable.com).
-* Create a [Docker Hub integration](http://docs.shippable.com/integrations/imageRegistries/dockerHub/) on shippable to your docker hub.
+* Create a [Docker Registry integration](http://docs.shippable.com/platform/integration/dockerRegistryLogin/) on shippable to your docker hub.
 * All your CI configuration is in `shippable.yml` file, while you will modify next to reflect your integration.
 * Update the integrationName in the integration.hub section with the integration name created above.
 * Change the DOCKER_REPO and DOCKER_ACC to point to your repo and docker account.
