@@ -22,7 +22,7 @@ Kubernetes clusters.
 * Change the DOCKER_REPO and DOCKER_ACC to point to your repo and docker account.
 * Next, follow these [CI Setup Instructions](http://docs.shippable.com/ci/runFirstBuild/) to enable your forked project for CI.
 * Build your CI project by clicking on the build button. Once the build completes, the NodeJS docker image will be pushed to your DockerHub account.
-* Create the Kubernetes integrations for beta and production environments using instructions provided [here]().
+* Create the Kubernetes integrations for beta and production environments using instructions provided [here](http://docs.shippable.com/platform/integration/kubernetes-config/).
 
 ## Add the pipeline  in Shippable
 * Sign in with your shippable account, select your subscription from the dropdown menu in upper left (three horizontal lines).
