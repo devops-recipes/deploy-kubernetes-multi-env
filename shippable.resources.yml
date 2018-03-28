@@ -5,7 +5,7 @@ resources:
 
   - name: deploy-kubernetes-multi-env-image
     type: image
-    integration: dr-dockerhub    #replace with your Docker Hub integration name
+    integration: drship_dockerhub    #replace with your Docker Hub integration name
     pointer:
       sourceName: "docker.io/devopsrecipes/deploy-kubernetes-multi-env"  #replace with your image name on Docker Hub
     seed:
